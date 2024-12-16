@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --dark-bg-color: #161722;
+  --dark-bg-main: #25273c;  
+  --dark-text-main: #cacde8;
+  --dark-text-secondary: #777a92;
+  --dark-text-hover: #e4e5f1;
+  --dark-text-concluded: #4d5066;
+}
+
+*::-webkit-scrollbar{
+  width: 0px;
+}
