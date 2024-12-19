@@ -19,12 +19,12 @@ exports.DatabaseModule = DatabaseModule = __decorate([
                 type: 'postgres',
                 host: 'localhost',
                 username: 'postgres',
-                password: 'root',
+                password: 'loc35516766',
                 database: 'todo',
                 entities: [__dirname + '/../**/*.entity{.ts,.js}'],
                 synchronize: true,
-            }),
-        ],
+            })
+        ]
     })
 ], DatabaseModule);
 //# sourceMappingURL=database.module.js.map

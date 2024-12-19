@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskModule = void 0;
 const common_1 = require("@nestjs/common");
-const task_service_1 = require("./task.service");
-const task_controller_1 = require("./task.controller");
 const typeorm_1 = require("@nestjs/typeorm");
+const Task_controller_1 = require("./Task.controller");
 const task_entity_1 = require("./task.entity");
+const task_service_1 = require("./task.service");
 let TaskModule = class TaskModule {
 };
 exports.TaskModule = TaskModule;
@@ -21,7 +21,7 @@ exports.TaskModule = TaskModule = __decorate([
             typeorm_1.TypeOrmModule.forFeature([task_entity_1.Task])
         ],
         providers: [task_service_1.TaskService],
-        controllers: [task_controller_1.TaskController]
+        controllers: [Task_controller_1.TaskController]
     })
 ], TaskModule);
 //# sourceMappingURL=task.module.js.map

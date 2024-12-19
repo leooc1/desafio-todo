@@ -4,6 +4,6 @@ export declare class Task {
     titulo: string;
     descricao: string;
     status: string;
-    create_date: string;
     user: Users;
+    data_criacao: Date;
 }

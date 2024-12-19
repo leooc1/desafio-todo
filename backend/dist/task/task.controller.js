@@ -14,49 +14,34 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskController = void 0;
 const common_1 = require("@nestjs/common");
-const task_service_1 = require("./task.service");
 const task_dto_1 = require("./task.dto");
+const task_service_1 = require("./task.service");
 let TaskController = class TaskController {
-    constructor(taskService) {
-        this.taskService = taskService;
+    constructor(usersService) {
+        this.usersService = usersService;
     }
-    async getTasks(response) {
-        const tasks = await this.taskService.getTasks();
-        return response.status(200).json(tasks);
-    }
-    async getOneTask(response, id) {
-        const task = await this.taskService.getOneTask(id);
-        return response.status(task[0]).json(task[1]);
-    }
-    async createTask(response, taskDto) {
-        const created = await this.taskService.createTask(taskDto);
+    async create(response, taskDto) {
+        const created = await this.usersService.create(taskDto);
         return response.status(created[0]).json(created[1]);
     }
-    async editTask(response, taskDto, id) {
-        const updated = await this.taskService.editTask(id, taskDto);
+    async delete(response, id) {
+        const deleted = await this.usersService.delete(id);
+        return response.status(deleted[0]).json(deleted[1]);
+    }
+    async update(response, id, taskDto) {
+        const updated = await this.usersService.update(id, taskDto);
         return response.status(updated[0]).json(updated[1]);
     }
-    async deleteTask(response, id) {
-        const deleted = await this.taskService.deleteTask(id);
-        return response.status(deleted[0]).json(deleted[1]);
+    async getAll(response) {
+        const tasks = await this.usersService.getAll();
+        return response.status(tasks[0]).json(tasks[1]);
+    }
+    async getOne(response, id) {
+        const task = await this.usersService.getOne(id);
+        return response.status(task[0]).json(task[1]);
     }
 };
 exports.TaskController = TaskController;
-__decorate([
-    (0, common_1.Get)(),
-    __param(0, (0, common_1.Res)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Promise)
-], TaskController.prototype, "getTasks", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Res)()),
-    __param(1, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", Promise)
-], TaskController.prototype, "getOneTask", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Res)()),
@@ -64,16 +49,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, task_dto_1.TaskDto]),
     __metadata("design:returntype", Promise)
-], TaskController.prototype, "createTask", null);
-__decorate([
-    (0, common_1.Put)(':id'),
-    __param(0, (0, common_1.Res)()),
-    __param(1, (0, common_1.Body)()),
-    __param(2, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, task_dto_1.TaskDto, Object]),
-    __metadata("design:returntype", Promise)
-], TaskController.prototype, "editTask", null);
+], TaskController.prototype, "create", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Res)()),
@@ -81,9 +57,33 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
-], TaskController.prototype, "deleteTask", null);
+], TaskController.prototype, "delete", null);
+__decorate([
+    (0, common_1.Put)(':id'),
+    __param(0, (0, common_1.Res)()),
+    __param(1, (0, common_1.Param)('id')),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object, task_dto_1.TaskDto]),
+    __metadata("design:returntype", Promise)
+], TaskController.prototype, "update", null);
+__decorate([
+    (0, common_1.Get)(),
+    __param(0, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], TaskController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Res)()),
+    __param(1, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], TaskController.prototype, "getOne", null);
 exports.TaskController = TaskController = __decorate([
     (0, common_1.Controller)('tasks'),
     __metadata("design:paramtypes", [task_service_1.TaskService])
 ], TaskController);
-//# sourceMappingURL=task.controller.js.map
+//# sourceMappingURL=Task.controller.js.map

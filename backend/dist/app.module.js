@@ -7,12 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
-require('dotenv').config();
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const users_module_1 = require("./users/users.module");
 const database_module_1 = require("./database/database.module");
+const users_module_1 = require("./users/users.module");
 const task_module_1 = require("./task/task.module");
 let AppModule = class AppModule {
 };

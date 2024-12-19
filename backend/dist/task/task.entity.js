@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Task = void 0;
-const users_entity_1 = require("../users/users.entity");
 const typeorm_1 = require("typeorm");
+const users_entity_1 = require("../users/users.entity");
 let Task = class Task {
 };
 exports.Task = Task;
@@ -20,27 +20,27 @@ __decorate([
     __metadata("design:type", Number)
 ], Task.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ length: 255, nullable: false }),
+    (0, typeorm_1.Column)({ length: 255 }),
     __metadata("design:type", String)
 ], Task.prototype, "titulo", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ length: 255, nullable: false }),
+    (0, typeorm_1.Column)('text', { nullable: true }),
     __metadata("design:type", String)
 ], Task.prototype, "descricao", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ length: 255, nullable: false }),
+    (0, typeorm_1.Column)({ length: 50 }),
     __metadata("design:type", String)
 ], Task.prototype, "status", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }),
-    __metadata("design:type", String)
-], Task.prototype, "create_date", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => users_entity_1.Users),
-    (0, typeorm_1.JoinColumn)({ name: 'user', foreignKeyConstraintName: 'fk_task_users' }),
+    (0, typeorm_1.ManyToOne)(() => users_entity_1.Users, { nullable: false, onDelete: 'CASCADE' }),
+    (0, typeorm_1.JoinColumn)({ name: 'user' }),
     __metadata("design:type", users_entity_1.Users)
 ], Task.prototype, "user", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }),
+    __metadata("design:type", Date)
+], Task.prototype, "data_criacao", void 0);
 exports.Task = Task = __decorate([
-    (0, typeorm_1.Entity)({ name: 'task' })
+    (0, typeorm_1.Entity)({ name: 'tasks' })
 ], Task);
 //# sourceMappingURL=task.entity.js.map
